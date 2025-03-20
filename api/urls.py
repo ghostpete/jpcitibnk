@@ -50,3 +50,6 @@ urlpatterns = [
     path('support/', create_support_request, name='create_support_request'),
     path('confirm-account-activation/<int:pk>/', ConfirmAccountActivationAPIView, name='confirm_account_activation'),
 ]
+
+
+

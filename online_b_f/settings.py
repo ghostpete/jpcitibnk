@@ -16,6 +16,12 @@ import os
 import dj_database_url
 from decouple import config
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +37,20 @@ DEBUG = True
 # DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
+
+
+# Cloudinary
+cloudinary.config(  
+    cloud_name=config('CLOUDINARY_CLOUD_NAME'),  
+    api_key=config('CLOUDINARY_API_KEY'),  
+    api_secret=config('CLOUDINARY_API_SECRET'),
+)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET')
+}
 
 # APPEND_SLASH = False
 
@@ -89,11 +109,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_USER_MODEL = 'app.CustomUser'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET')
-}
+
 
 
 MIDDLEWARE = [
