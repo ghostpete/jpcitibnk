@@ -32,6 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+APPEND_SLASH = False
 
 # LOGING FILE
 
@@ -53,6 +54,7 @@ ALLOWED_HOSTS = ["*"]
 #         },
 #     },
 # }
+
 
 
 # Application definition
@@ -171,6 +173,7 @@ FROM_EMAIL=config('FROM_EMAIL')
 EMAIL_PASSWORD=config('EMAIL_PASSWORD')
 EMAIL_SMTP_SERVER=config('EMAIL_SMTP_SERVER')
 # EMAIL_SMTP_PORT= config('EMAIL_SMTP_PORT', cast=int)
+
 
 
 # Internationalization

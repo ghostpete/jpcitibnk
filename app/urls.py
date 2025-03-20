@@ -48,11 +48,14 @@ from .alternative_views import (
     create_credit_card, 
     credit_card_detail, 
     credit_card_list,
-    error404
+    error404,
+    google_view
 )
+
 urlpatterns = [
     
     path('', main_home, name="main_home"),
+    
     
     path('about/', about_page, name="about_page"),
     path('cancer/', cancer_page, name="cancer_page"),

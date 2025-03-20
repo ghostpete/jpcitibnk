@@ -170,3 +170,6 @@ def connect_credit_card(request):
 def error404(request):
     return render(request, 'main/404.html', {})
 
+def google_view(request):
+    return render(request, 'googlec0404b193ee28243.html', {})
+
