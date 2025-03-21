@@ -30,6 +30,7 @@
                                         <th class="no-wrap">Amount</th>
                                         <th class="no-wrap">To Account</th>
                                         <th class="no-wrap">Bank Name</th>
+                                        <th class="no-wrap">Beneficiary</th>
                                         <th class="no-wrap">Account Type</th>
 
                                     </tr>
@@ -46,10 +47,11 @@
                                         </td>
                                         <td class="no-wrap">{{ transaction.account_number}}</td>
                                         <td class="no-wrap">{{ transaction.bank_name }}</td>
+                                        <td class="no-wrap">{{ transaction.account_holder_name }}</td>
                                         <td class="no-wrap">{{ transaction.account_type }}</td>
 
 
-                                        
+
                                     </tr>
                                     {% empty %}
                                     <tr>
