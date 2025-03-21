@@ -1498,8 +1498,12 @@ def update_kyc(request):
         })
 
 
-
-
+@login_required
+def transaction_history(request):
+    transfer_transactions = TransferDetails.objects.all().filter(user=request.user)
+    return render(request, "dashboard/major/history.html", {
+            "transactions": transfer_transactions,
+        })
 
 
 

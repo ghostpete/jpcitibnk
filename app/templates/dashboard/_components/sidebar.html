@@ -50,6 +50,12 @@
                     <span class="align-middle">Loans</span>
                 </a>
             </li>
+            <li class="sidebar-item bg-bank-primary">
+                <a class="sidebar-link bg-bank-primary" href="{% url 'transaction_history' %}">
+                    <i class="align-middle" data-feather="activity"></i>
+                    <span class="align-middle">Transfer History</span>
+                </a>
+            </li>
 
 
             {% if user.can_apply_for_cards %}

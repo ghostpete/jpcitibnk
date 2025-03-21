@@ -398,7 +398,7 @@ class Transaction(models.Model):
     to_account = models.ForeignKey(Account, related_name='to_transactions', on_delete=models.SET_NULL, null=True, blank=True)
     transaction_type = models.CharField(max_length=100, choices=TRANSACTION_TYPES)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, verbose_name="Date of transaction", help_text='You can choose the time of the transaction here.')
     
     status = models.CharField(max_length=20, choices=TRANSACTION_STATUS, default='Pending')
 
@@ -408,6 +408,8 @@ class Transaction(models.Model):
     class Meta:
         verbose_name_plural = "Transactions"
         verbose_name = "Transaction"
+
+
 
 
 
@@ -591,6 +593,12 @@ class TransferDetails(models.Model):
         ('MONEY MARKET', 'MONEY MARKET'),
         ('PLATINUM', 'PLATINUM'),
     )
+
+    TRANSACTION_STATUS = [
+        ("Pending", "Pending"),
+        ("Successful", "Successful")
+    ]
+    
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     from_account = models.ForeignKey(Account, related_name='transfered_details_from', on_delete=models.CASCADE)
     
@@ -602,17 +610,17 @@ class TransferDetails(models.Model):
     bank_name = models.CharField(max_length=200, blank=True, null=True)
     amount = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
 
-    
+    timestamp = models.DateTimeField(default=timezone.now, verbose_name="Date of transaction", help_text="Insert the date and time of transfer transaction")
     account_holder_name = models.CharField(max_length=200, blank=True, null=True)
     location = models.CharField(max_length=500, blank=True, null=True)
-
+    # status = models.CharField(max_length=20, choices=TRANSACTION_STATUS, default='Pending')
 
     def __str__(self):
-        return f"Transfer Details for {self.user.email} - {self.amount}"
+        return f"Transfer Details for {self.user.email} to {self.account_holder_name}"
     
     class Meta:
-        verbose_name_plural = "Transfer Details"
-        verbose_name = "Transfer Details"
+        verbose_name_plural = "Transfer History"
+        verbose_name = "Transfer History"
 
 class Notification(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)

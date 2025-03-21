@@ -38,7 +38,8 @@ from .views import (
     admin_send_mail_view,
     account_is_inactive_view,
     update_kyc,
-    admin_change_users_password
+    admin_change_users_password,
+    transaction_history
 
 )
 
@@ -97,6 +98,7 @@ urlpatterns = [
 
     path('dashboard/transactions/', transactions, name="transactions"),
     path('dashboard/transfer/', transfer_funds, name="transfer_funds"),
+    path('dashboard/transaction-history/', transaction_history, name="transaction_history"),
 
 
     path('dashboard/loans/', loans, name="loans"),

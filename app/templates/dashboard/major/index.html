@@ -441,7 +441,7 @@
                                 {% for transaction in transactions %}
                                 <tr>
                                     <!-- <td>{{ transaction.timestamp|date:"M. d" }}</td> -->
-                                    <td class="no-wrap">{{ transaction.timestamp|date:"M. d" }}</td>
+                                    <td class="no-wrap">{{ transaction.timestamp }}</td>
                                     <td class="no-wrap">{{ transaction.transaction_type }}</td>
                                     <td class="no-wrap">{% if transaction.from_account.account_type %}
                                         {{transaction.from_account.account_type}}
